@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("pseudo", 50);
             $table->string("email",255);
             $table->string("password");
-            $table->timestamp("created_at");
+            $table->timestamp("created_at")->default(DB::raw('CURRENT_TIMESTAMP'));;
         });
     }
 
