@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +19,11 @@ class StoryFactory extends Factory
     {
         return [
             "title" => $this->faker->sentence(6),
+            "accroche" => implode(" ", $this->faker->words(6)),
             "content" => $this->faker->paragraph(15),
-            "author_id" => $this->faker->numberBetween(1, 10)
+
+            "user_id" => User::inRandomOrder()->first(),
+
         ];
     }
 }
