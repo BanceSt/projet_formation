@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
             $table->string("title", 255);
+            $table->text("accroche")->nullable();
+            $table->text("illustration")->nullable();
             $table->longText("content");
             $table->timestamps();
 
-            $table->unsignedBigInteger("author_id");
-            $table->foreign("author_id")->references("id")->on("authors");
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users");
 
             // $table->foreignId("author_id")->constrained();
         });
