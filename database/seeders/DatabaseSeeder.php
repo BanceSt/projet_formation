@@ -47,6 +47,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             StoriesSeeder::class,
+            TagSeeder::class,
         ]);
     }
 }
