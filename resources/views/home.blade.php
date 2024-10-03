@@ -1,7 +1,7 @@
 @extends("layouts.main")
 @section("content")
         {{-- sidebar --}}
-        <aside id="logo-sidebar" class="z-40 w-64 h-screen transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
+        <aside id="logo-sidebar" class="z-40 w-2/12 h-screen transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
             <div class="h-full px-3 pb-4 overflow-y-auto bg-gray-800">
                 <div class="py-5">
                     <h1 class="pb-3.5 text-xl font-bold text-white"> ABOUTS {{ config('app.name') }} </h1>
@@ -30,7 +30,7 @@
         </aside>
 
         {{-- contenu --}}
-        <div class="flex flex-col flex-grow h-full min-h-screen pt-5 bg-red-100">
+        <div class="flex flex-col w-10/12 h-full min-h-screen pt-5 bg-red-100">
 
             {{-- short presentation --}}
             <div class="w-2/4 ml-20 h-36">
@@ -51,7 +51,11 @@
             <div class="ml-5 text-base font-bold capitalize">
                 Découvrez le concept avec ces histoires :
             </div>
-            <div></div>
+            <div class="grid grid-cols-3 gap-1 mx-5 mb-3 bg-blue-300">
+                @livewire('story-box', ['story' => $stories[0]])
+                @livewire('story-box', ['story' => $stories[1]])
+                @livewire('story-box', ['story' => $stories[2]])
+            </div>
 
             {{-- Hr personnaliser --}}
             <div class="flex flex-row w-full h-8">

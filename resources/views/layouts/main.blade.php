@@ -36,7 +36,7 @@
 
 
                 <div class="flex items-center space-x-3 text-white rtl:space-x-reverse">
-                    <a href="" class="text-2xl font-semibold whitespace-nowrap"> Sign In </a>
+                    <a href="{{route('register')}}" class="text-2xl font-semibold whitespace-nowrap"> Sign In </a>
                     <span class="text-2xl font-semibold whitespace-nowrap"> /  </span>
                     <a href="" class="text-2xl font-semibold whitespace-nowrap"> Sign Up </a>
                     <button type="button" class="inline-flex text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-2xl px-2.5 py-1 text-center me-2">
