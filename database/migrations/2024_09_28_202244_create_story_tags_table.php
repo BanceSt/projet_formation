@@ -15,11 +15,11 @@ return new class extends Migration
             $table->unsignedBigInteger("story_id");
             $table->foreign("story_id")->references("id")->on("stories");
 
-            $table->unsignedBigInteger("tag_id");
-            $table->foreign("tag_id")->references("id")->on("tags");
+            $table->unsignedBigInteger("tags_id");
+            $table->foreign("tags_id")->references("id")->on("tags");
 
             $table->timestamps();
-            $table->primary(['story_id', 'tag_id']);
+            $table->primary(['story_id', 'tags_id']);
         });
     }
 

@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->boolean("private_email");
+            $table->boolean("private_email")->default(false);
             $table->text("description")->nullable();
             $table->text("profile_picture")->nullable();
             $table->enum("role", ["membre", "abonne", "admin", "superadmin"])->default("membre");
             $table->enum("state", ["public", "private", "desabled"])->default("public");
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('birthday')->nullable();
+            $table->date('birthday');
             $table->string('password');
             $table->string('networks')->nullable();
             $table->rememberToken();

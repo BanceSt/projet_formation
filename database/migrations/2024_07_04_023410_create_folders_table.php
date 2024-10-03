@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger("author_id");
-            $table->foreign("author_id")->references("id")->on("authors");
+            // $table->unsignedBigInteger("author_id");
+            // $table->foreign("author_id")->references("id")->on("authors");
 
             $table->string("name", 100);
             $table->text("description");

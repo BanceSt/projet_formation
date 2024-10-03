@@ -18,7 +18,7 @@ class TagsFactory extends Factory
     {
         return [
             //
-            "name" => $this->faker->word(),
+            "name" => $this->faker->unique->word(),
             "description" => $this->faker->sentence(),
         ];
     }
