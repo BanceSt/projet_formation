@@ -46,11 +46,10 @@ class RegisteredUserController extends Controller
             'birthday' => $birthday,
         ]);
 
-        // event(new Registered($user));
+        event(new Registered($user));
 
-        // Auth::login($user);
-        return  $birthday;
+        Auth::login($user);
 
-        // return redirect(route('home', absolute: false));
+        return redirect(route('home', absolute: false));
     }
 }
