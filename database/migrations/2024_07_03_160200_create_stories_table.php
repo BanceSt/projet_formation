@@ -15,12 +15,24 @@ return new class extends Migration
             $table->id();
             $table->string("title", 255);
             $table->text("accroche")->nullable();
+            $table->text("note")->nullable();
             $table->text("illustration")->nullable();
             $table->longText("content");
+            $table->text("question");
+            $table->boolean("start")->default(False);
+            $table->boolean("end")->default(False);
             $table->timestamps();
 
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")->references("id")->on("users");
+
+            $table->unsignedBigInteger("father_id")->nullable();
+            $table->foreign("father_id")->references("id")->on("stories");
+
+            $table->unsignedBigInteger("root_id")->nullable();
+            $table->foreign("root_id")->references("id")->on("stories");
+
+
 
             // $table->foreignId("author_id")->constrained();
         });

@@ -21,9 +21,22 @@ class StoryFactory extends Factory
             "title" => $this->faker->sentence(6),
             "accroche" => implode(" ", $this->faker->words(6)),
             "content" => $this->faker->paragraph(15),
+            "question" => $this->faker->sentence(6),
+            "note" => $this->may_generate_words(50),
 
             "user_id" => User::inRandomOrder()->first(),
 
         ];
     }
+
+    public function may_generate_words($chanceOfGettingTrue)
+    {
+        if (fake()->boolean($chanceOfGettingTrue)) {
+            return implode(" ", $this->faker->words(20)) ;
+        } else {
+            return null;
+        }
+    }
+
+
 }
