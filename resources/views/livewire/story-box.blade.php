@@ -3,7 +3,7 @@
     <div class="flex flex-row flex-wrap w-full h-full bg-slate-900">
         <div class="flex flex-row w-full">
             <div class="w-24 h-24 bg-red-200">
-
+                <img src="{{asset('storage/' . $story->illustration)}}" alt="" class="object-cover size-full">
             </div>
             <div class="flex flex-col flex-grow h-24 bg-red-400">
                 <div class="font-medium break-words ps-1">

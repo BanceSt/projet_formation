@@ -69,18 +69,18 @@
         </div>
 
         <div id="choices" class="hidden pt-1 text-base text-slate-400">
-            <span class="flex font-bold capitalize">
-                choix précédents :
+            <span class="flex mb-2 font-bold capitalize">
+                {{$story->question}}
             </span>
-        <ul>
-        @foreach ($story->children as $story_sons)
-            <li >
-                 <a href="{{route('story', ['id' => $story_sons->id])}}" class="hover:underline">
-                    {{ $story_sons->title }}
-                </a>
-            </li>
-        @endforeach
-        </ul>
+            <ul>
+            @foreach ($story->children as $story_sons)
+                <li >
+                    <a href="{{route('story', ['id' => $story_sons->id])}}" class="hover:underline">
+                        {{ $story_sons->title }}
+                    </a>
+                </li>
+            @endforeach
+            </ul>
         </div>
 
         @endif
@@ -94,13 +94,45 @@
         </div>
 
 
-
-
-
-
-
     </div>
 </aside>
+
+{{-- contenu --}}
+<div class="flex flex-col items-center w-10/12 h-full min-h-screen pt-5 text-white bg-red-100">
+    {{-- titre et author  --}}
+    <div class="justify-center text-5xl font-bold align text-zinc-600">
+        {{ $story->title}}
+    </div>
+    <div class="justify-center text-2xl font-bold align text-zinc-800">
+        par
+        <span class="italic underline underline-offset-2"> {{ $story->user->name}} </span>
+
+    </div>
+
+    {{-- illustration --}}
+    <div class="mt-5 bg-black max-h-96">
+        <img src="{{asset('storage/' . $story->illustration)}}" alt="" class="object-cover h-full">
+    </div>
+
+    {{-- content --}}
+    <div class="px-10 mt-4 text-xl leading-relaxed text-black">
+        {{$story->content}}
+    </div>
+
+    {{-- section choix --}}
+    <div class="w-full px-10 mt-5 text-base text-left text-black ">
+        <span class="font-bold"> {{$story->question}} </span>
+        <ul>
+            @foreach ($story->children as $story_sons)
+                <li class="pl-2">
+                    <a href="{{route('story', ['id' => $story_sons->id])}}" class="hover:underline">
+                        {{" - " . $story_sons->title }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+</div>
 
 <script>
     document.getElementById('display_choice').addEventListener('change', function() {

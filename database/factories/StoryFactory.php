@@ -23,6 +23,7 @@ class StoryFactory extends Factory
             "content" => $this->faker->paragraph(15),
             "question" => $this->faker->sentence(6),
             "note" => $this->may_generate_words(50),
+            "illustration" => $this->random_image(),
 
             "user_id" => User::inRandomOrder()->first(),
 
@@ -36,6 +37,10 @@ class StoryFactory extends Factory
         } else {
             return null;
         }
+    }
+
+    public function random_image() {
+        return "HnG0" . strval($this->faker->numberBetween(1, 9)) . ".png";
     }
 
 
