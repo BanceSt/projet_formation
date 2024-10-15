@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Story;
+use App\Observers\StoryObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -22,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+        Story::observe(StoryObserver::class);
     }
 }
