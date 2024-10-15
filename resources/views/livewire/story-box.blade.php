@@ -7,7 +7,7 @@
             </div>
             <div class="flex flex-col flex-grow h-24 bg-red-400">
                 <div class="font-medium break-words ps-1">
-                    <a href="{{route('story', ['id' => $story->id])}}">
+                    <a href="{{route('story.show', ['id' => $story->id])}}">
                     {{ \Illuminate\Support\Str::limit($story->title, 50) }}
                     </a>
                 </div>
