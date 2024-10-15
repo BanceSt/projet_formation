@@ -6,7 +6,9 @@
         {{-- Histoire racine  --}}
         <div class="text-xl font-bold text-center text-white">
             {{ $story->root()->first()->title}} <span class="font-normal"> par
-               <span class="underline underline-offset-2"> {{ $story->root()->first()->user->name}} </span>
+               <span class="underline underline-offset-2">
+                {{ $story->root()->first()->user ? $story->root()->first()->user->name : "Anonymous"}}
+               </span>
             </span>
         </div>
 
@@ -16,7 +18,9 @@
 
         <div class="text-xl font-bold text-center text-white">
             {{ $story->title}} <span class="font-normal"> par
-               <span class="underline underline-offset-2"> {{ $story->user->name}} </span>
+               <span class="underline underline-offset-2">
+                {{ $story->user ? $story->user->name : "Anonymous"}}
+                </span>
             </span>
         </div>
 
@@ -33,7 +37,7 @@
         @isset($story->father_id)
         <div class="pt-5 text-base text-slate-400">
             <span class="flex font-bold capitalize"> histoire père : </span>
-            <a href="{{route('story', ['id' => $story->father_id ?? 1])}}" class="hover:underline">
+            <a href="{{route('story.show', ['id' => $story->father_id ?? 1])}}" class="hover:underline">
             {{
                 $story->father()->first()->title
             }}
@@ -50,7 +54,7 @@
         <ul>
         @foreach ($story->father->children as $story_sibling)
             <li >
-                 <a href="{{route('story', ['id' => $story_sibling->id])}}" class="hover:underline">
+                 <a href="{{route('story.show', ['id' => $story_sibling->id])}}" class="hover:underline">
                     {{ $story_sibling->title }}
                 </a>
             </li>
@@ -75,7 +79,7 @@
             <ul>
             @foreach ($story->children as $story_sons)
                 <li >
-                    <a href="{{route('story', ['id' => $story_sons->id])}}" class="hover:underline">
+                    <a href="{{route('story.show', ['id' => $story_sons->id])}}" class="hover:underline">
                         {{ $story_sons->title }}
                     </a>
                 </li>
@@ -105,7 +109,9 @@
     </div>
     <div class="justify-center text-2xl font-bold align text-zinc-800">
         par
-        <span class="italic underline underline-offset-2"> {{ $story->user->name}} </span>
+        <span class="italic underline underline-offset-2">
+            {{ $story->user ? $story->user->name : "Anonymous"}}
+        </span>
 
     </div>
 
@@ -125,7 +131,7 @@
         <ul>
             @foreach ($story->children as $story_sons)
                 <li class="pl-2">
-                    <a href="{{route('story', ['id' => $story_sons->id])}}" class="hover:underline">
+                    <a href="{{route('story.show', ['id' => $story_sons->id])}}" class="hover:underline">
                         {{" - " . $story_sons->title }}
                     </a>
                 </li>
