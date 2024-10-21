@@ -4,6 +4,16 @@
 @tailwind utilities;
 
 
+/* Custom CSS Needed for TipTap PlaceHolder */
+.ProseMirror p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+    padding-left: 2px;
+  }
+
 .dropzoneDragArea {
     background-color: #fbfdff;
     border: 1px dashed #c0ccda;

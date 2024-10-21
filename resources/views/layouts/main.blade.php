@@ -13,7 +13,7 @@
     <title>@yield('title', "Home")</title>
 </head>
 <body>
-    <div class="h-screen min-h-screen">
+    <div class="h-full max-h-full min-h-screen">
         {{-- Navbar --}}
         <nav class="bg-gray-900 border-gray-200 ">
             <div class="flex flex-wrap items-center justify-between max-w-full p-4">

@@ -122,7 +122,7 @@
 
     {{-- content --}}
     <div class="px-10 mt-4 text-xl leading-relaxed text-black">
-        {{$story->content}}
+        {!! \Illuminate\Support\Str::markdown($story->content) !!}
     </div>
 
     {{-- section choix --}}

@@ -6,7 +6,7 @@
 @endsection
 
 @section("vite")
-@vite(['resources/js/create_story.js'])
+@vite(['resources/js/create_story.js', 'resources/js/rich_editor.js'])
 @endsection
 
 @section("meta")
@@ -15,7 +15,7 @@
 @endsection
 
 @section("content")
-<aside id="logo-sidebar" class="z-40 w-2/12 h-screen transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
+<aside id="logo-sidebar" class="z-40 w-2/12 h-screen max-h-full transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
     <div class="ml-2 text-gray-100">
         <div class="mt-4 text-xl font-bold text-white">
             Règle :
@@ -33,7 +33,7 @@
     </div>
 </aside>
 
-<div class="flex flex-col w-10/12 h-full min-h-screen pt-5 bg-red-100">
+<div class="flex flex-col w-10/12 h-full max-h-full min-h-screen pt-5 bg-red-100">
     <form action="{{route('story.store')}}" method="POST" enctype="multipart/form-data" class="dropzone" id="upload-form">
     @csrf
     <div class="grid grid-cols-3 mx-5">
@@ -68,6 +68,14 @@
 
         </div>
     </div>
+
+    <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
+
+    <div class="flex justify-center ">
+        <x-wysiwyg-editor/>
+        <input type="hidden" name="contentEditeur" id="contentEditeur">
+    </div>
+
 
     <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
 
