@@ -39,7 +39,7 @@ class StoryController extends Controller
         $story->note = $request->note;
         $story->illustration = isset($fileName) ? $fileName : null;
         $story->content = $request->contentEditeur;
-        $story->question = "test ?";
+        $story->question = $request->question;
 
         $story->save();
          // Retourner la réponse JSON avec l'ID de l'histoire

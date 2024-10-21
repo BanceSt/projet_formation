@@ -79,6 +79,12 @@
 
     <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
 
+    <x-input-label for="question" :value="__('Question :')" class="text-xl"/>
+    <x-text-input id="question" class="block w-full mt-1" type="text" name="question" :value="old('question')" value="Quel est votre prochaine action ?"/>
+
+
+    <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
+
     {{-- choix de tag --}}
     @livewire("tags-input")
 

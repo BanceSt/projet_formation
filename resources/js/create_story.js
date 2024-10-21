@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append("accroche", document.querySelector("#accroche").value);
         formData.append("note", document.querySelector("#note").value);
         formData.append("tags", document.querySelector("#tags").value);
+        formData.append("question", document.querySelector("#question").value);
         formData.append("contentEditeur", editor.getHTML().trim());
 
         fetch(storeUrl, {
@@ -130,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 formData.append("note", document.querySelector("#note").value);
                 formData.append("tags", document.querySelector("#tags").value);
                 formData.append("tags", document.querySelector("#tags").value);
+                formData.append("question", document.querySelector("#question").value);
                 formData.append("contentEditeur", editor.getHTML().trim());
             });
 
