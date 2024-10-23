@@ -65,6 +65,9 @@
         </nav>
 
         <div class="flex flex-row w-full h-full min-h-screen">
+            <aside id="logo-sidebar" class="sticky top-0 z-40 w-2/12 h-screen px-2 transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
+            @yield("aside")
+            </aside>
             @yield("content")
         </div>
 

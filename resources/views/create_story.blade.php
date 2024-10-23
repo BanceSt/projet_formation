@@ -14,8 +14,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
-@section("content")
-<aside id="logo-sidebar" class="z-40 w-2/12 h-screen max-h-full transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
+@section("aside")
+
     <div class="ml-2 text-gray-100">
         <div class="mt-4 text-xl font-bold text-white">
             Règle :
@@ -31,8 +31,10 @@
             </div>
         </div>
     </div>
-</aside>
 
+@endsection
+
+@section("content")
 <div class="flex flex-col w-10/12 h-full max-h-full min-h-screen pt-5 bg-red-100">
     <form action="{{route('story.store')}}" method="POST" enctype="multipart/form-data" class="dropzone" id="upload-form">
     @csrf
@@ -93,6 +95,4 @@
     {{-- <input type="submit" value="Valider" class="border"> --}}
     </form>
 </div>
-
-
 @endsection

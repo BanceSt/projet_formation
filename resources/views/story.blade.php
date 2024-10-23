@@ -1,7 +1,7 @@
 @extends("layouts.main")
 @section("title", "Histoire")
-@section("content")
-<aside id="logo-sidebar" class="z-40 w-2/12 h-screen px-2 transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
+@section("aside")
+
     <div class="h-full pt-3 overflow-y-auto bg-gray-800">
         {{-- Histoire racine  --}}
         <div class="text-xl font-bold text-center text-white">
@@ -99,8 +99,9 @@
 
 
     </div>
-</aside>
 
+@endsection
+@section("content")
 {{-- contenu --}}
 <div class="flex flex-col items-center w-10/12 h-full min-h-screen pt-5 text-white bg-red-100">
     {{-- titre et author  --}}
