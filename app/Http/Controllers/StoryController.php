@@ -37,7 +37,7 @@ class StoryController extends Controller
         $story->title = $request->title;
         $story->accroche = $request->accroche;
         $story->note = $request->note;
-        $story->illustration = isset($fileName) ? $fileName : null;
+        $story->illustration = isset($fileName) ? "illustration/" . $fileName : null;
         $story->content = $request->contentEditeur;
         $story->question = $request->question;
 

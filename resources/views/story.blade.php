@@ -116,8 +116,8 @@
     </div>
 
     {{-- illustration --}}
-    <div class="mt-5 bg-black max-h-96">
-        <img src="{{asset('storage/' . $story->illustration)}}" alt="" class="object-cover h-full">
+    <div class="mt-5 overflow-hidden bg-black max-h-96">
+        <img src="{{asset('storage/' . $story->illustration)}}" alt="" class="object-cover h-full max-h-96">
     </div>
 
     {{-- content --}}
