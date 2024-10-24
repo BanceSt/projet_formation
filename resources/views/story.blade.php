@@ -127,30 +127,54 @@
     </div>
 
     {{-- section choix --}}
-    <div class="w-full px-10 mt-5 text-base text-left text-black ">
-        <span class="font-bold"> {{$story->question}} </span>
-        <ul>
+    <div class="w-full px-10 mt-5 text-left text-black ">
+        <span class="text-2xl font-semibold text-transparent" style="color : #070235;"> {{$story->question}} </span>
+        <div class="pl-1">
             @foreach ($story->children as $story_sons)
-                <li class="pl-2">
-                    <a href="{{route('story.show', ['id' => $story_sons->id])}}" class="hover:underline">
-                        {{" - " . $story_sons->title }}
+                    <a class="block relative my-2.5 text-xl reponse_link" href="{{route('story.show', ['id' => $story_sons->id])}}">
+                        <i class="no-underline hover:no-underline fa-regular fa-circle-dot"> </i>
+                        <span class="w-full h-full reponse"> {{$story_sons->title }} </span>
                     </a>
-                </li>
+                <hr style="border-top: dotted 1px;" />
             @endforeach
-        </ul>
+            <a class="block relative my-2.5 text-xl reponse_link" href="{{route('story.show', ['id' => $story_sons->id])}}">
+                <i class="no-underline hover:no-underline fa-solid fa-circle-plus"> </i>
+                <span class="w-full h-full reponse"> Ajouter une autre choix </span>
+            </a>
+        </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('display_choice').addEventListener('change', function() {
-        const contentDiv = document.getElementById('choices');
+    document.addEventListener("DOMContentLoaded", function() {
+        reponses_link = document.querySelectorAll(".reponse_link")
 
-        if (this.checked) {
-            contentDiv.classList.remove('hidden');  // Affiche la div
-        } else {
-            contentDiv.classList.add('hidden');  // Cache la div
-        }
-    });
+        reponses_link.forEach(element => {
+
+            // Ajouter le surlignage
+            element.addEventListener("mouseover", function(e) {
+                element.querySelector(".reponse").classList.add("underline");
+        })
+
+             // Enlever le surlignage
+            element.addEventListener("mouseout", function(e) {
+                element.querySelector(".reponse").classList.remove("underline");
+        })
+
+    })
+
+
+
+        document.getElementById('display_choice').addEventListener('change', function() {
+            const contentDiv = document.getElementById('choices');
+
+            if (this.checked) {
+                contentDiv.classList.remove('hidden');  // Affiche la div
+            } else {
+                contentDiv.classList.add('hidden');  // Cache la div
+            }
+        });
+    })
 
 </script>
 @endsection
