@@ -137,7 +137,7 @@
                     </a>
                 <hr style="border-top: dotted 1px;" />
             @endforeach
-            <a class="block relative my-2.5 text-xl reponse_link" href="{{route('story.show', ['id' => $story_sons->id])}}">
+            <a class="block relative my-2.5 text-xl reponse_link">
                 <i class="no-underline hover:no-underline fa-solid fa-circle-plus"> </i>
                 <span class="w-full h-full reponse"> Ajouter une autre choix </span>
             </a>
@@ -154,11 +154,13 @@
             // Ajouter le surlignage
             element.addEventListener("mouseover", function(e) {
                 element.querySelector(".reponse").classList.add("underline");
+                element.querySelector(".reponse").classList.add("cursor-pointer");
         })
 
              // Enlever le surlignage
             element.addEventListener("mouseout", function(e) {
                 element.querySelector(".reponse").classList.remove("underline");
+                element.querySelector(".reponse").classList.remove("cursor-pointer");
         })
 
     })

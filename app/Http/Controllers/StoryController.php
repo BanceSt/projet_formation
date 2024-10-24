@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Story;
+use App\Models\Story_tag;
+use App\Models\Tags;
 use Illuminate\Http\Request;
 
 class StoryController extends Controller
@@ -40,9 +42,32 @@ class StoryController extends Controller
         $story->illustration = isset($fileName) ? "illustration/" . $fileName : null;
         $story->content = $request->contentEditeur;
         $story->question = $request->question;
-
         $story->save();
-         // Retourner la réponse JSON avec l'ID de l'histoire
+
+        // Ajout les tags
+        foreach (explode(",", $request->tags)  as $tag) {
+            $tag = trim($tag);
+
+            // Vérifier si le tag existe déjà
+            $existing_tag = Tags::where("name", $tag)->first();
+
+            if (!$existing_tag)
+            {
+                $new_tag = new Tags();
+                $new_tag->name = $tag;
+                $new_tag->save();
+                $tag_id = $new_tag->id;
+            } else {
+                $tag_id = $existing_tag->id;
+            }
+
+            $storytag = new Story_tag();
+            $storytag->story_id = $story->id;
+            $storytag->tags_id = $tag_id;
+            $storytag->save();
+        }
+
+        // Retourner la réponse JSON avec l'ID de l'histoire
         return response()->json([
         'success' => true,
         'redirectUrl' => route("story.show", ["id" => $story->id])
