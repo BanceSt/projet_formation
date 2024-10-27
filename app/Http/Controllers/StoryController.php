@@ -6,6 +6,7 @@ use App\Models\Story;
 use App\Models\Story_tag;
 use App\Models\Tags;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StoryController extends Controller
 {
@@ -37,6 +38,7 @@ class StoryController extends Controller
         // Exemple :
         $story = new Story();
         $story->title = $request->title;
+        $story->user_id = Auth::check() ? Auth::user()->id : null;
         $story->accroche = $request->accroche;
         $story->note = $request->note;
         $story->illustration = isset($fileName) ? "illustration/" . $fileName : null;
