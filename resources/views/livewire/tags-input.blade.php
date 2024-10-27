@@ -1,6 +1,6 @@
 <div class="flex flex-col mx-5">
     {{-- affiche les tags --}}
-    <div class="flex flex-row flex-wrap mb-2">
+    {{-- <div class="flex flex-row flex-wrap mb-2">
         @foreach ($tags as $tag)
         <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded me-2 dark:bg-blue-900 dark:text-blue-300 ">
             {{$tag}}
@@ -13,7 +13,8 @@
             </button>
         </span>
         @endforeach
-    </div>
+    </div> --}}
+    <x-tags-display :$tags />
 
     <input type="hidden" name="tags" id="tags" value="{{implode(',', $tags)}}">
 

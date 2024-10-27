@@ -94,7 +94,8 @@
             <span class="flex font-bold capitalize">
                 Tags :
             </span>
-            {{ implode(", " ,$story->tags->pluck("name")->toArray())}}
+            <x-tags-display :tags="$story->tags->pluck('name')->toArray()" :delete_opt="false"/>
+
         </div>
 
 
