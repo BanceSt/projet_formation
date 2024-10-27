@@ -12,7 +12,8 @@
 
         <div class="w-full">
             <button type="button" class="w-full px-5 py-2.5 text-md font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
-                focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onclick="window.location='{{route("register")}}'">
                 Rejoignez-nous
             </button>
 
@@ -21,7 +22,8 @@
             </div>
 
             <button type="button" class="w-full px-5 py-2.5 text-md font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
-                focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onclick="window.location='{{route("story.create")}}'">
                 Commencer à écrire !
             </button>
         </div>

@@ -54,7 +54,8 @@
                     <span class="text-2xl font-semibold whitespace-nowrap"> /  </span>
                     <a href="{{route('login')}}" class="text-2xl font-semibold whitespace-nowrap"> Sign Up </a>
                     @endauth
-                    <button type="button" class="inline-flex text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-2xl px-2.5 py-1 text-center me-2">
+                    <button type="button" class="inline-flex text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-2xl px-2.5 py-1 text-center me-2"
+                            onclick="window.location='{{route("story.create")}}'">
                         NEW
                         <i class="self-center text-base fa-solid fa-pen ps-2"></i>
                     </button>
