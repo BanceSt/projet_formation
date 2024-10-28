@@ -48,6 +48,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             StoriesSeeder::class,
             TagSeeder::class,
+            commentSeeder::class,
         ]);
     }
 }

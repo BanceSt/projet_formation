@@ -30,6 +30,10 @@ class Story extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function comment() :HasMany {
+        return $this->hasMany(Comment::class);
+    }
+
     public function tags() :BelongsToMany {
         return $this->belongsToMany(Tags::class);
     }

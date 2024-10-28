@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            // $table->unsignedBigInteger("author_id");
-            // $table->foreign("author_id")->references("id")->on("authors");
+            $table->id();
 
+            $table->unsignedBigInteger("user_id")->nullable();
             $table->unsignedBigInteger("story_id");
+            $table->unsignedBigInteger("reply_to")->nullable();
+            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("reply_to")->references("id")->on("comments");
             $table->foreign("story_id")->references("id")->on("stories");
 
             $table->text("content");
-            // $table->unsignedBigInteger("reply_to")->nullable();
-            // $table->foreign("reply_to")->references("id")->on("authors");
-
             $table->timestamps();
         });
     }
