@@ -144,6 +144,11 @@
             </a>
         </div>
     </div>
+
+    {{-- section commentaire --}}
+    <div class="w-full px-10 mt-5 text-black ">
+        @livewire("comment-section", ["story_id" => $story->id])
+    </div>
 </div>
 
 <script>

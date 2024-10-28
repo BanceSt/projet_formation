@@ -13,4 +13,6 @@ class Story_tag extends Model
         "story_id",
         "tags_id"
     ];
+
+
 }
