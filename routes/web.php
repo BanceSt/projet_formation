@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomePageController::class, 'show'])->name('home');
 
 Route::prefix("Story")->name("story")->group(function () {
-    Route::get("/create", [StoryController::class, "create"])->name('.create');
-    Route::post("/add", [StoryController::class, "store"])->name('.store');
+    Route::get("/create/{id?}", [StoryController::class, "create"])->name('.create');
+    Route::post("/store", [StoryController::class, "store"])->name('.store');
     Route::get("/{id}", [StoryController::class, "show"])->name('.show');
 });
 

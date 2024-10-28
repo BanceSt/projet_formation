@@ -55,7 +55,7 @@
         @foreach ($story->father->children as $story_sibling)
             <li >
                  <a href="{{route('story.show', ['id' => $story_sibling->id])}}" class="hover:underline">
-                    {{ $story_sibling->title }}
+                    {{ $story_sibling->title}}
                 </a>
             </li>
         @endforeach
@@ -80,7 +80,7 @@
             @foreach ($story->children as $story_sons)
                 <li >
                     <a href="{{route('story.show', ['id' => $story_sons->id])}}" class="hover:underline">
-                        {{ $story_sons->title }}
+                        {{ $story_sons->reponse }}
                     </a>
                 </li>
             @endforeach
@@ -128,22 +128,33 @@
     </div>
 
     {{-- section choix --}}
+
+    @if ($story->end)
+    <div class="w-full px-10 mt-5 text-center text-black ">
+        <span class="font-bold text-3xl"> ============
+        <span class="text-2xl"> FIN DE BRANCHE </span>
+        ============ </span>
+    </div>
+    @else
     <div class="w-full px-10 mt-5 text-left text-black ">
         <span class="text-2xl font-semibold text-transparent" style="color : #070235;"> {{$story->question}} </span>
         <div class="pl-1">
             @foreach ($story->children as $story_sons)
                     <a class="block relative my-2.5 text-xl reponse_link" href="{{route('story.show', ['id' => $story_sons->id])}}">
                         <i class="no-underline hover:no-underline fa-regular fa-circle-dot"> </i>
-                        <span class="w-full h-full reponse"> {{$story_sons->title }} </span>
+                        <span class="w-full h-full reponse"> {{$story_sons->reponse}} </span>
                     </a>
                 <hr style="border-top: dotted 1px;" />
             @endforeach
-            <a class="block relative my-2.5 text-xl reponse_link">
+            <a class="block relative my-2.5 text-xl reponse_link" href="{{route('story.create', ['id' => $story->id])}}">
                 <i class="no-underline hover:no-underline fa-solid fa-circle-plus"> </i>
                 <span class="w-full h-full reponse"> Ajouter une autre choix </span>
             </a>
         </div>
     </div>
+    @endif
+
+
 
     {{-- section commentaire --}}
     <div class="w-full px-10 mt-5 text-black ">

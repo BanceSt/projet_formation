@@ -24,7 +24,7 @@ class StoryFactory extends Factory
             "question" => $this->faker->sentence(6),
             "note" => $this->may_generate_words(50),
             "illustration" => $this->random_image(),
-
+            "reponse" => $this->faker->sentence(6),
             "user_id" => User::inRandomOrder()->first(),
 
         ];

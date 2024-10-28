@@ -36,8 +36,31 @@
 
 @section("content")
 <div class="flex flex-col w-10/12 h-full max-h-full min-h-screen pt-5 bg-red-100">
+    {{-- Ajoute d'un une branche --}}
+
     <form action="{{route('story.store')}}" method="POST" enctype="multipart/form-data" class="dropzone" id="upload-form">
     @csrf
+    @isset($story)
+    <div class="flex flex-col items-center">
+        <div class="text-2xl text-gray-700/85">
+            Ajout d'une branche à
+            <span class="text-black font-semibold">  {{$story->title}} </span>
+        </div>
+
+        <div class="text-xl flex flex-col w-full px-10 mt-2">
+            <div> {{$story->question}} </div>
+            <x-input-label for="reponse" :value="__('Reponse :')" class="text-xl"/>
+            <x-text-input id="reponse" class="block w-full mt-1" type="text" name="reponse" :value="old('reponse')"/>
+            <div class="text-black/45"> # Si aucune réponse n'est entrée alors le titre sera choisis comme réponse </div>
+        </div>
+
+        <input type="hidden" name="father_id" id="father_id" value="{{$story->id}}" />
+
+
+    </div>
+    <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
+    @endisset
+
     <div class="grid grid-cols-3 mx-5">
         <div class="col-span-2">
             <x-input-label for="title" :value="__('Titre :')" class="text-xl"/>
@@ -73,7 +96,7 @@
 
     <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
 
-    <div class="flex justify-center ">
+    <div class="flex justify-center">
         <x-wysiwyg-editor/>
         <input type="hidden" name="contentEditeur" id="contentEditeur">
     </div>
@@ -81,9 +104,18 @@
 
     <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
 
-    <x-input-label for="question" :value="__('Question :')" class="text-xl"/>
-    <x-text-input id="question" class="block w-full mt-1" type="text" name="question" :value="old('question')" value="Quel est votre prochaine action ?"/>
-
+     {{-- question et fin de branche --}}
+    <div class="px-10">
+        @isset($story)
+        <div class="flex flex-row items-center">
+            <label for="end" class="pr-2"> Fin de Branche ? </label>
+            <input type="checkbox" name="end" id="end" value="">
+            <div class="text-black/45 pl-2"> # Si cette case est coché cette branche sera considérée comme fini, et personne ne pourra contribué à celle-ci. Ainsi aucune question ne sera nécéssaire</div>
+        </div>
+        @endisset
+        <x-input-label for="question" :value="__('Question :')" class="text-xl" />
+        <x-text-input id="question" class="block w-full mt-1" type="text" name="question" :value="old('question')" value="Quel est votre prochaine action ?"/>
+    </div>
 
     <hr class="w-9/12 h-1 mx-auto my-4 bg-gray-400 border-0 rounded md:my-10 dark:bg-gray-700">
 
@@ -95,4 +127,20 @@
     {{-- <input type="submit" value="Valider" class="border"> --}}
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        endElement = document.querySelector("#end");
+
+        endElement.addEventListener("change", (e) => {
+            if (endElement.checked) {
+                document.querySelector("#question").disabled = true;
+                document.querySelector("#question").classList.add("bg-gray-400/40")
+            } else {
+                document.querySelector("#question").disabled = false;
+                document.querySelector("#question").classList.remove("bg-gray-400/40")
+            }
+        })
+    })
+</script>
 @endsection

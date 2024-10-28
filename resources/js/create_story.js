@@ -18,6 +18,40 @@ document.addEventListener("DOMContentLoaded", function() {
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     console.log(storeUrl);
 
+
+    function form_create(formData) {
+        // Father id
+        var father_id = null;
+        const fatheridElement = document.querySelector("#father_id")
+        if (fatheridElement) father_id = fatheridElement.value;
+
+        // end
+        var end = 0;
+        const endElement = document.querySelector("#end")
+        if (endElement) end = endElement.checked ? 1 : 0;
+
+        // reponse
+        const reponseElement = document.querySelector("#reponse")
+        var rep = null
+        if (reponseElement) {
+            if (reponseElement.value.trim() === "") rep = document.querySelector("#question").value;
+            else rep = reponseElement.value;
+        }
+
+        // ajout des infos dans le formulaire
+        formData.append("_token", csrfToken);
+        formData.append("title", document.querySelector("#title").value);
+        formData.append("accroche", document.querySelector("#accroche").value);
+        formData.append("note", document.querySelector("#note").value);
+        formData.append("tags", document.querySelector("#tags").value);
+        formData.append("question", document.querySelector("#question").value);
+        formData.append("reponse", rep);
+        formData.append("father_id", father_id);
+        formData.append("end", end);
+        formData.append("contentEditeur", editor.getHTML().trim());
+    }
+
+
     // tip tap editor setup
     const editor = new Editor({
         element: document.querySelector('#wysiwyg-example'),
@@ -51,13 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fonction pour envoyer le formulaire sans image
     function sendFormWithoutImage() {
         var formData = new FormData();
-        formData.append("_token", csrfToken);
-        formData.append("title", document.querySelector("#title").value);
-        formData.append("accroche", document.querySelector("#accroche").value);
-        formData.append("note", document.querySelector("#note").value);
-        formData.append("tags", document.querySelector("#tags").value);
-        formData.append("question", document.querySelector("#question").value);
-        formData.append("contentEditeur", editor.getHTML().trim());
+        form_create(formData);
 
         fetch(storeUrl, {
             method: "POST",
@@ -122,17 +150,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
 
             this.on("sending", function(file, xhr, formData) {
-                // Ajouter le token CSRF au formData
-                formData.append("_token", csrfToken);
+               form_create(formData);
 
-                // Ajouter les autres champs du formulaire
-                formData.append("title", document.querySelector("#title").value);
-                formData.append("accroche", document.querySelector("#accroche").value);
-                formData.append("note", document.querySelector("#note").value);
-                formData.append("tags", document.querySelector("#tags").value);
-                formData.append("tags", document.querySelector("#tags").value);
-                formData.append("question", document.querySelector("#question").value);
-                formData.append("contentEditeur", editor.getHTML().trim());
             });
 
             // Réception du succès du serveur

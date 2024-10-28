@@ -44,6 +44,9 @@ class StoryController extends Controller
         $story->illustration = isset($fileName) ? "illustration/" . $fileName : null;
         $story->content = $request->contentEditeur;
         $story->question = $request->question;
+        $story->reponse = $request->end ? null : $request->reponse;
+        $story->father_id = $request->father_id;
+        $story->end = $request->end;
         $story->save();
 
         // Ajout les tags
@@ -76,7 +79,11 @@ class StoryController extends Controller
         ]);
         }
 
-    public function create() {
-        return view("create_story");
+    public function create($id = null) {
+        $story = null;
+        if ($id) $story = Story::find($id);
+        return view("create_story", [
+            "story" => $story
+        ]);
     }
 }

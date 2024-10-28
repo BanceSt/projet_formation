@@ -22,6 +22,7 @@ class Story extends Model
         "question",
         "root_id",
         "father_id",
+        "reponse",
         "start",
         "end"
     ];

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text("illustration")->nullable();
             $table->longText("content");
             $table->text("question");
+            $table->text("reponse")->nullable();
             $table->boolean("start")->default(False);
             $table->boolean("end")->default(False);
             $table->timestamps();
