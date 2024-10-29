@@ -43,27 +43,57 @@
 
 
 
-                <div class="flex items-center space-x-3 text-white rtl:space-x-reverse">
+                <div class="relative flex {{auth()->check() ? 'items-center' : 'items-baseline'}} flex-row space-x-3 text-white rtl:space-x-reverse">
+
+                    <button type="button" class="inline-flex text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-xl px-2.5 py-1 text-center"
+                            onclick="window.location='{{route("story.create")}}'">
+                        NEW
+                        <i class="self-center text-sm fa-solid fa-pen ps-2"></i>
+                    </button>
+
                     @auth
-                    <form action="{{route('logout')}}" method="POST">
-                    @csrf <!-- {{ csrf_field() }} -->
+                    {{-- <form action="{{route('logout')}}" method="POST"> --}}
+                    {{-- @csrf  --}}
                         {{-- <a href="{{route('logout')}}" class="text-2xl font-semibold whitespace-nowrap"> Log out </a> --}}
-                        <button class="text-2xl font-semibold whitespace-nowrap"
+                        {{-- <button class="text-2xl font-semibold whitespace-nowrap"
                         onclick="window.location='{{route("logout")}}'">
                             Log out
                         </button>
-                    </form>
+                    </form> --}}
+
+                    <div id="profil_picture" class="relative rounded size-8 bg-slate-400">
+                        <a href="{{asset('storage/HnG01.png')}}" class="size-8">
+                            <img src="{{asset('storage/HnG01.png')}}" alt="image de profile" class="object-cover w-full h-full rounded">
+                        </a>
+
+                        <div id="menu_pp" class="absolute right-0 hidden w-48 h-auto bg-orange-200 border-2 border-orange-300 rounded top-10 menu_pp">
+                            <div class="ml-2 font-semibold text-left text-black"> {{auth()->user()->name}}</div>
+                            <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
+                            <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
+                            <div class="ml-2 text-left text-black">
+                                Dernière lecture
+                            </div>
+                            <div class="ml-2 text-left text-black">
+                                Paramètre
+                            </div>
+                            <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
+                            <div class="ml-2 text-left text-black">
+                                Se deconnecter
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
 
                     @else
-                    <a href="{{route('register')}}" class="text-2xl font-semibold whitespace-nowrap"> Sign In </a>
+                    <div class="mr-2 text-xl">
+                    <a href="{{route('register')}}" class="font-semibold whitespace-nowrap"> Sign In </a>
                     <span class="text-2xl font-semibold whitespace-nowrap"> /  </span>
-                    <a href="{{route('login')}}" class="text-2xl font-semibold whitespace-nowrap"> Sign Up </a>
+                    <a href="{{route('login')}}" class="font-semibold whitespace-nowrap"> Sign Up </a>
+                    </div>
                     @endauth
-                    <button type="button" class="inline-flex text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-2xl px-2.5 py-1 text-center me-2"
-                            onclick="window.location='{{route("story.create")}}'">
-                        NEW
-                        <i class="self-center text-base fa-solid fa-pen ps-2"></i>
-                    </button>
                 </div>
 
 
@@ -81,6 +111,41 @@
     </div>
 
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var hovering_menu_pp = false;
+            var timeout_menu_pp = null;
+
+            var menu_pp = document.getElementById("menu_pp");
+            var profile_picture = document.getElementById("profil_picture");
+
+            menu_pp.addEventListener("mouseover", (e) => {
+                hovering_menu_pp = true;
+            })
+
+            menu_pp.addEventListener("mouseout", (e) => {
+                hovering_menu_pp = false;
+            })
+
+            profile_picture.addEventListener("mouseover", (e) => {
+                menu_pp.classList.remove("hidden")
+                menu_pp.style.maxHeight = menu_pp.scrollHeight + "px";
+                clearTimeout(timeout_menu_pp);
+            })
+
+            profile_picture.addEventListener("mouseout", (e) => {
+                timeout_menu_pp = setTimeout(() => {
+                    if (!hovering_menu_pp) {
+                        menu_pp.style.maxHeight = "0px";
+                        setTimeout(() => {
+                            menu_pp.classList.add("hidden");
+                        }, 450)
+                    }
+                }, 500);
+
+            })
+        })
+    </script>
     @livewireScripts
 </body>
 </html>
