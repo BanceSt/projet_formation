@@ -26,6 +26,6 @@ class Folder extends Model
     }
 
     public function stories() : BelongsToMany {
-        return $this->belongsToMany(Story::class, "in_folder");
+        return $this->belongsToMany(Story::class, "In_folders", "folder_id", "story_id");
     }
 }

@@ -14,21 +14,24 @@ class StoriesSeeder extends Seeder
     public function run(): void
     {
         //
-        Story::factory(100)->create([
-            "question" => "Quel sera votre prochaine action ?",
-            ]
+        $stories = Story::factory(300)->make([
+                    "question" => "Quel sera votre prochaine action ?",
+                    ]
         );
 
-        $stories = Story::all();
-
         foreach ($stories as $story) {
-            $story->update(['root_id' => $story->id]);
+            $story->root_id = $story->id;
+            Story::factory(3)->create([
+                "father_id" => $story->id,
+                "root_id" => $story->root_id
+            ]);
+            $story->save();
         };
+
 
         Story::factory(3)->create([
             "father_id" => 1,
             "root_id" => 1,
-
         ]);
     }
 }

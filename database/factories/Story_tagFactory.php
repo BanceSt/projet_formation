@@ -20,25 +20,11 @@ class Story_tagFactory extends Factory
      */
     public function definition(): array
     {
-        $not_use = true;
-        while ($not_use) {
-            $story_id = Story::inRandomOrder()->first()->id;
-            $tags_id = Tags::inRandomOrder()->first()->id;
-
-            if (!(Story_tag::where("tags_id", $tags_id)
-                           ->where("story_id", $story_id)
-                           ->lockForUpdate()
-                           ->exists())) {
-                $not_use = False;
-            }
-        }
-
-
         // Vérifier l'existence de la combinaison avant d'insérer
 
         return [
-            'story_id' => $story_id,
-            'tags_id' => $tags_id,
+            'story_id' => Story::inRandomOrder()->first()->id,
+            'tags_id' => Tags::inRandomOrder()->first()->id,
         ];
     }
 }
