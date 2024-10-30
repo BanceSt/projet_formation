@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -62,5 +63,13 @@ class User extends Authenticatable
 
     public function folder(): HasMany {
         return $this->hasMany( Folder::class);
+    }
+
+    public function follow(): BelongsToMany {
+        return $this->belongsToMany(User::class, "follows", "follower_id", "follow_id");
+    }
+
+    public function follower(): BelongsToMany {
+        return $this->belongsToMany(User::class, "follows", "follow_id", "follower_id");
     }
 }

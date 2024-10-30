@@ -22,6 +22,18 @@ class UserSeeder extends Seeder
             'password' => "1234"
         ]);
 
-        User::factory(10)->create();
+        User::factory(100)->create();
+
+        $users = User::all();
+
+        foreach ($users as $user) {
+            $qtn = fake()->numberBetween(0, 50);
+            if ($qtn) {
+                $new_follower = User::where("id", "!=", $user->id)->inRandomOrder()
+                                        ->take($qtn)->pluck("id");
+                $user->follower()->attach($new_follower);
+            }
+
+        }
     }
 }

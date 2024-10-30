@@ -36,8 +36,8 @@
                     <div class="no-wrap"> histoires lues : 0</div>
                     <div> histoires commencées : {{$user->story()->where("father_id", null)->count()}} </div>
                     <div> histoires contribués : {{$user->story()->count()}}</div>
-                    <div> Authors suivis : 0</div>
-                    <div> Abonnés : 0 </div>
+                    <div> Authors suivis : {{$user->follow()->count()}} </div>
+                    <div> Abonnés : {{$user->follower()->count()}} </div>
                 </div>
 
             </div>

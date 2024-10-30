@@ -18,7 +18,7 @@ class FollowFactory extends Factory
     {
         return [
             //
-            "followed_id" => $this->faker->numberBetween(2, 8),
+            "follow_id" => $this->faker->numberBetween(2, 8),
             "follower_id" => $this->faker->numberBetween(1, 5),
         ];
     }
