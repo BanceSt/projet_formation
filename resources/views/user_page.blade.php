@@ -6,7 +6,7 @@
 @endphp
 
 @section("title")
-    @if ($user->name === auth()->user()->name)
+    @if ((auth()->check()) and ($user->name === auth()->user()->name))
         Ma page
     @else
         Page de {{$user->name}}
@@ -23,7 +23,7 @@
         <div class="flex rounded shadow-md bg-gray-200/75 h-52">
             <div class="size-52">
                 <img class="object-cover w-full h-full rounded"
-                src="{{asset(auth()->user()->profile_picture ? auth()->user()->profile_picture : 'storage/pp/placeholder_pp.png' )}}">
+                src="{{asset($user->profile_picture ?? 'storage/pp/placeholder_pp.png' )}}">
             </div>
 
             <div class="flex flex-col flex-grow h-full px-2">
