@@ -35,7 +35,6 @@
 @endsection
 
 @section("content")
-<div class="flex flex-col w-10/12 h-full max-h-full min-h-screen pt-5 bg-red-100">
     {{-- Ajoute d'un une branche --}}
 
     <form action="{{route('story.store')}}" method="POST" enctype="multipart/form-data" class="dropzone" id="upload-form">
@@ -44,10 +43,10 @@
     <div class="flex flex-col items-center">
         <div class="text-2xl text-gray-700/85">
             Ajout d'une branche à
-            <span class="text-black font-semibold">  {{$story->title}} </span>
+            <span class="font-semibold text-black">  {{$story->title}} </span>
         </div>
 
-        <div class="text-xl flex flex-col w-full px-10 mt-2">
+        <div class="flex flex-col w-full px-10 mt-2 text-xl">
             <div> {{$story->question}} </div>
             <x-input-label for="reponse" :value="__('Reponse :')" class="text-xl"/>
             <x-text-input id="reponse" class="block w-full mt-1" type="text" name="reponse" :value="old('reponse')"/>
@@ -110,7 +109,7 @@
         <div class="flex flex-row items-center">
             <label for="end" class="pr-2"> Fin de Branche ? </label>
             <input type="checkbox" name="end" id="end" value="">
-            <div class="text-black/45 pl-2"> # Si cette case est coché cette branche sera considérée comme fini, et personne ne pourra contribué à celle-ci. Ainsi aucune question ne sera nécéssaire</div>
+            <div class="pl-2 text-black/45"> # Si cette case est coché cette branche sera considérée comme fini, et personne ne pourra contribué à celle-ci. Ainsi aucune question ne sera nécéssaire</div>
         </div>
         @endisset
         <x-input-label for="question" :value="__('Question :')" class="text-xl" />
@@ -126,7 +125,7 @@
     <button type="button" id="valide_but">Submit data and files!</button>
     {{-- <input type="submit" value="Valider" class="border"> --}}
     </form>
-</div>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

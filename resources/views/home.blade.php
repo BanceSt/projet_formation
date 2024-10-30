@@ -33,7 +33,6 @@
 
 @section("content")
 {{-- contenu --}}
-<div class="flex flex-col w-10/12 h-full min-h-screen pt-5 bg-red-100">
 
     {{-- short presentation --}}
     <div class="w-2/4 ml-20 h-36">
@@ -51,10 +50,10 @@
     </div>
 
     {{-- section découverte --}}
-    <div class="ml-5 text-base font-bold capitalize">
+    <div class="mb-1 ml-5 text-base font-bold capitalize">
         Découvrez le concept avec ces histoires :
     </div>
-    <div class="grid grid-cols-3 gap-1 mx-5 mb-3 bg-blue-300">
+    <div class="grid grid-cols-3 gap-1 mx-5 mb-3 ">
         @livewire('story-box', ['story' => $stories[0]])
         @livewire('story-box', ['story' => $stories[1]])
         @livewire('story-box', ['story' => $stories[2]])
@@ -85,5 +84,4 @@
         Les histoires débutées pas nos auteurs les plus populaires :
     </div>
     <div></div>
-</div>
 @endsection

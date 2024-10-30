@@ -1,14 +1,14 @@
-<div class="h-40 p-1 bg-slate-600">
+<div class="h-40 rounded shadow bg-gradient-to-r from-orange-50/55 to-orange-100/10">
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
-    <div class="flex flex-row flex-wrap w-full h-full bg-slate-900">
+    <div class="flex flex-row flex-wrap w-full h-full ">
         <div class="flex flex-row w-full">
-            <div class="w-24 h-24 bg-red-200">
+            <div class="w-24 h-24 ">
                 <img src="{{asset('storage/' . $story->illustration)}}" alt="" class="object-cover size-full">
             </div>
-            <div class="flex flex-col flex-grow h-24 bg-red-400">
+            <div class="flex flex-col flex-grow h-24 ">
                 <div class="font-medium break-words ps-1">
                     <a href="{{route('story.show', ['id' => $story->id])}}">
-                    {{ \Illuminate\Support\Str::limit($story->title, 50) }}
+                    {{ \Illuminate\Support\Str::limit($story->title, 45) }}
                     </a>
                 </div>
                 <div class="text-sm font-medium text-gray-700 ps-1">
@@ -22,7 +22,7 @@
         </div>
 
 
-        <div class="w-full h-14 bg-slate-700">
+        <div class="w-full h-14 ">
            Tags : {{implode(", ", $story->tags->pluck('name')->toArray())}}
         </div>
 

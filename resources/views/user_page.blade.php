@@ -16,9 +16,9 @@
 @section("aside")
 @endsection
 
+@section("class_div_content", "items-center")
 @section("content")
 {{-- contenu --}}
-<div class="flex flex-col items-center w-10/12 h-full min-h-screen pt-5 text-white bg-red-100">
     <div class="flex items-center justify-center w-full h-56 mb-32">
         <div class="flex rounded shadow-md bg-gray-200/75 h-52">
             <div class="size-52">
@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection
 
 

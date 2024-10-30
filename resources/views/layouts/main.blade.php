@@ -20,7 +20,7 @@
             <div class="flex flex-wrap items-center justify-between max-w-full p-2">
                 <a href="{{route('home')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                    <span class="self-center text-2xl font-semibold text-white whitespace-nowrap">Flowbite</span>
+                    <span class="self-center text-2xl font-semibold text-white whitespace-nowrap">Posty</span>
                 </a>
 
 
@@ -115,7 +115,9 @@
             <aside id="logo-sidebar" class="sticky top-0 z-40 w-2/12 h-screen px-2 transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
             @yield("aside")
             </aside>
+            <div class="@yield("class_div_content") flex flex-col w-10/12 h-auto min-h-screen pt-5 bg-gradient-to-b from-orange-50/45 to-orange-100/15">
             @yield("content")
+            </div>
         </div>
 
 

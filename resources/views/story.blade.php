@@ -107,9 +107,9 @@
     </div>
 
 @endsection
+@section("class_div_content", "items-center")
 @section("content")
 {{-- contenu --}}
-<div class="flex flex-col items-center w-10/12 h-full min-h-screen pt-5 text-white bg-red-100">
     {{-- titre et author  --}}
     <div class="justify-center text-5xl font-bold align text-zinc-600">
         {{ $story->title}}
@@ -167,7 +167,6 @@
     <div class="w-full px-10 mt-5 text-black ">
         @livewire("comment-section", ["story_id" => $story->id])
     </div>
-</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
