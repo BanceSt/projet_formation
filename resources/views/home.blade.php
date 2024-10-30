@@ -50,13 +50,17 @@
     </div>
 
     {{-- section découverte --}}
+    @php
+        $stories_random = $stories->where('father_id', null)->random(14);
+        $stories_recent = $stories->sortByDesc("created_at")->take(14);
+    @endphp
     <div class="mb-1 ml-5 text-base font-bold capitalize">
         Découvrez le concept avec ces histoires :
     </div>
-    <div class="grid grid-cols-3 gap-1 mx-5 mb-3 ">
-        @livewire('story-box', ['story' => $stories[0]])
-        @livewire('story-box', ['story' => $stories[1]])
-        @livewire('story-box', ['story' => $stories[2]])
+    <div class="flex flex-wrap justify-center gap-4 mb-3 ">
+        @foreach ($stories_random as $story)
+            @livewire("story-box", ["story" => $story, "width_box" => "32%"])
+        @endforeach
     </div>
 
     {{-- Hr personnaliser --}}
@@ -70,7 +74,11 @@
     <div class="ml-5 text-base font-bold capitalize">
         Les histoires récement actualiser :
     </div>
-    <div></div>
+    <div class="flex flex-wrap justify-center gap-4 mb-3 ">
+        @foreach ($stories_recent as $story)
+            @livewire("story-box", ["story" => $story, "width_box" => "32%"])
+        @endforeach
+    </div>
 
     {{-- Hr personnaliser --}}
     <div class="flex flex-row w-full h-8">

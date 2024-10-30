@@ -95,11 +95,17 @@
         @endif
 
         {{-- tag de la branche  --}}
+        @php
+            $tags = $story->tags->pluck('name')->toArray();
+            usort($tags, function($a, $b) {
+                return strlen($a) <=> strlen($b);
+            })
+        @endphp
         <div class="pt-5 text-base text-slate-400">
-            <span class="flex font-bold capitalize">
+            <span class="flex mb-2 font-bold capitalize">
                 Tags :
             </span>
-            <x-tags-display :tags="$story->tags->pluck('name')->toArray()" :delete_opt="false"/>
+            <x-tags-display :tags="$tags" :delete_opt="false"/>
 
         </div>
 
