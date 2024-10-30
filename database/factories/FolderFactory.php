@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class FolderFactory extends Factory
     {
         return [
             //
-            "author_id" => $this->faker->numberBetween(1, 10),
+            "user_id" => User::inRandomOrder()->first()->id,
             "name" => $this->faker->word(),
             "description" => $this->faker->sentence(3),
             "categorie" => $this->faker->randomElement(["creations", "favorites"])

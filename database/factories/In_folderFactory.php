@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Folder;
+use App\Models\Story;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +20,8 @@ class In_folderFactory extends Factory
     {
         return [
             //
-            "folder_id" => $this->faker->numberBetween(1, 20),
-            "story_id" => $this->faker->numberBetween(1,20),
+            "folder_id" => Folder::inRandomOrder()->first()->id,
+            "story_id" => Story::inRandomOrder()->first()->id,
         ];
     }
 }

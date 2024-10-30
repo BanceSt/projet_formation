@@ -17,6 +17,8 @@ return new class extends Migration
 
             $table->unsignedBigInteger("story_id");
             $table->foreign("story_id")->references("id")->on("stories");
+
+            $table->primary(["folder_id", "story_id"]);
         });
     }
 

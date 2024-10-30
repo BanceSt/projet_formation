@@ -14,7 +14,7 @@ class StoriesSeeder extends Seeder
     public function run(): void
     {
         //
-        Story::factory(10)->create([
+        Story::factory(100)->create([
             "question" => "Quel sera votre prochaine action ?",
             ]
         );

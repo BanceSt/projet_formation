@@ -59,4 +59,8 @@ class User extends Authenticatable
     public function comment(): HasMany {
         return $this->hasMany(Comment::class);
     }
+
+    public function folder(): HasMany {
+        return $this->hasMany( Folder::class);
+    }
 }

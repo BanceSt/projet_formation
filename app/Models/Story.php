@@ -39,6 +39,10 @@ class Story extends Model
         return $this->belongsToMany(Tags::class);
     }
 
+    public function folders() : BelongsToMany {
+        return $this->belongsToMany(Folder::class, "in_folder");
+    }
+
     // Relation auto-référentielle : Une story peut avoir un "père"
     public function father() : BelongsTo {
         return $this->belongsTo(Story::class, 'father_id');
