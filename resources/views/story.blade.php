@@ -5,9 +5,12 @@
     <div class="h-full pt-3 overflow-y-auto bg-gray-800">
         {{-- Histoire racine  --}}
         <div class="text-xl font-bold text-center text-white">
-            {{ $story->root()->first()->title}} <span class="font-normal"> par
+            {{ $story->root()->first()->title}}
+            <span class="font-normal"> par
                <span class="underline underline-offset-2">
-                {{ $story->root()->first()->user ? $story->root()->first()->user->name : "Anonymous"}}
+                <a href="{{ $story->root()->first()->user ? route('profil.show', $story->root()->first()->user->name) : '#'}}">
+                    {{ $story->root()->first()->user ? $story->root()->first()->user->name : "Anonymous"}}
+                </a>
                </span>
             </span>
         </div>
@@ -19,7 +22,9 @@
         <div class="text-xl font-bold text-center text-white">
             {{ $story->title}} <span class="font-normal"> par
                <span class="underline underline-offset-2">
+                <a href="{{ $story->user ? route('profil.show', $story->user->name) : '#'}}">
                 {{ $story->user ? $story->user->name : "Anonymous"}}
+                </a>
                 </span>
             </span>
         </div>
@@ -112,7 +117,9 @@
     <div class="justify-center text-2xl font-bold align text-zinc-800">
         par
         <span class="italic underline underline-offset-2">
-            {{ $story->user ? $story->user->name : "Anonymous"}}
+            <a href="{{ $story->user ? route('profil.show', $story->user->name) : '#'}}">
+                {{ $story->user ? $story->user->name : "Anonymous"}}
+            </a>
         </span>
 
     </div>
@@ -131,7 +138,7 @@
 
     @if ($story->end)
     <div class="w-full px-10 mt-5 text-center text-black ">
-        <span class="font-bold text-3xl"> ============
+        <span class="text-3xl font-bold"> ============
         <span class="text-2xl"> FIN DE BRANCHE </span>
         ============ </span>
     </div>

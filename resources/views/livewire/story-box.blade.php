@@ -12,7 +12,8 @@
                     </a>
                 </div>
                 <div class="text-sm font-medium text-gray-700 ps-1">
-                    by <span> {{$story->user->name}} </span>
+                    by <span> <a href="{{ $story->user ? route("profil.show", $story->user->name) : '#'}}">
+                        {{ $story->user ? $story->user->name : 'Anonyme'}} </a>  </span>
                 </div>
                 <div class="w-full ps-1 pe-1">
                     {{$story->accroche}}

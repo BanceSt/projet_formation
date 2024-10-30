@@ -13,6 +13,7 @@
     <title>@yield('title', "Home")</title>
 </head>
 <body>
+
     <div class="h-full max-h-full min-h-screen">
         {{-- Navbar --}}
         <nav class="bg-gray-900 border-gray-200 ">
@@ -62,12 +63,17 @@
                     </form> --}}
 
                     <div id="profil_picture" class="relative rounded size-8 bg-slate-400">
-                        <a href="{{asset('storage/HnG01.png')}}" class="size-8">
-                            <img src="{{asset('storage/HnG01.png')}}" alt="image de profile" class="object-cover w-full h-full rounded">
+                        <a href="{{route("profil.show", auth()->user()->name)}}" class="size-8">
+                            <img src="{{asset(auth()->user()->profile_picture ? auth()->user()->profile_picture : 'storage/pp/placeholder_pp.png' )}}"
+                            alt="image de profile" class="object-cover w-full h-full rounded">
                         </a>
 
                         <div id="menu_pp" class="absolute right-0 hidden w-48 h-auto bg-orange-200 border-2 border-orange-300 rounded top-10 menu_pp">
-                            <div class="ml-2 font-semibold text-left text-black"> {{auth()->user()->name}}</div>
+                            <div class="ml-2 font-semibold text-left text-black">
+                                <a href="{{route("profil.show", auth()->user()->name)}}">
+                                {{auth()->user()->name}}
+                                </a>
+                            </div>
                             <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
                             <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
                             <div class="ml-2 text-left text-black">
@@ -78,7 +84,12 @@
                             </div>
                             <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
                             <div class="ml-2 text-left text-black">
-                                Se deconnecter
+                                <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                <button onclick="window.location='{{route("logout")}}'">
+                                    Se déconnecter
+                                </button>
+                                </form>
                             </div>
                         </div>
                     </div>
