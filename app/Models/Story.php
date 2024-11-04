@@ -27,38 +27,47 @@ class Story extends Model
         "end"
     ];
 
+    // Chaque histoire appartient à un auteur (one-to-many)
     public function user() :BelongsTo {
         return $this->belongsTo(User::class);
     }
 
+    // Chaque histoire peut avoir plusieurs commentaires (one-to-Many)
     public function comment() :HasMany {
         return $this->hasMany(Comment::class);
     }
 
+    // Chaque histoire peut êter liker et marquer plusieur fois (one-to-many)
+    public function engagemt() :HasMany {
+        return $this->hasMany(Engagemt::class);
+    }
+
+    // Chaque histoire a un ou plusieur tags (many-to-many)
     public function tags() :BelongsToMany {
         return $this->belongsToMany(Tags::class);
     }
 
+    // Chaque histoire peut être dans plusieurs dossier (many-to-many)
     public function folders() : BelongsToMany {
         return $this->belongsToMany(Folder::class, "In_folders", "story_id", "folder_id");
     }
 
-    // Relation auto-référentielle : Une story peut avoir un "père"
+    // Chaque histoire peut avoir une histoire "père" (one-to-many)
     public function father() : BelongsTo {
         return $this->belongsTo(Story::class, 'father_id');
     }
 
-    // Relation inverse : Une story peut avoir plusieurs "enfants"
+    // Chaque histoire peut avoir plusieurs histoires "enfants" (one-to-many)
     public function children() : HasMany {
         return $this->hasMany(Story::class, 'father_id');
     }
 
-    // Relation auto-référentielle : Une story peut avoir une racine
+    // Chaque histoire peut avoir une racine (one-to-many)
     public function root() : BelongsTo {
         return $this->belongsTo(Story::class, 'root_id');
     }
 
-    // Relation inverse : Une racine peut avoir plusieurs stories
+    // Une racine peut avoir plusieurs Histoire (one-to-many)
     public function all_stories() : HasMany {
         return $this->hasMany(Story::class, "root_id");
     }
