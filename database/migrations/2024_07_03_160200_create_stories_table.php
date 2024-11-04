@@ -32,10 +32,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger("root_id")->nullable();
             $table->foreign("root_id")->references("id")->on("stories");
-
-
-
-            // $table->foreignId("author_id")->constrained();
         });
     }
 
