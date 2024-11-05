@@ -32,6 +32,7 @@ class StoryFactory extends Factory
 
     public function may_generate_words($chanceOfGettingTrue)
     {
+        //  Chance de genere une phrase en fonction du pourcentage donné
         if (fake()->boolean($chanceOfGettingTrue)) {
             return implode(" ", $this->faker->words(20)) ;
         } else {
@@ -40,8 +41,7 @@ class StoryFactory extends Factory
     }
 
     public function random_image() {
+        // retourne le chemin d'une image au hasard
         return "HnG0" . strval($this->faker->numberBetween(1, 9)) . ".png";
     }
-
-
 }

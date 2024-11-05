@@ -27,11 +27,5 @@ class StoriesSeeder extends Seeder
                 "root_id" => $story->id
             ]);
         };
-
-
-        Story::factory(3)->create([
-            "father_id" => 1,
-            "root_id" => 1,
-        ]);
     }
 }

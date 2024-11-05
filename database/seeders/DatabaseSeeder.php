@@ -25,25 +25,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        // Author::factory(10)->create();
-        // Story::factory(20)->create();
-        // Comment::factory(25)->create();
-        // Follow::factory(15)->create();
-        // Folder::factory(20)->create();
-        // Engagemt::factory(10)->create();
-        // In_folder::factory(20)->create();
-        // Branch::factory(5)->create();
-        // Variable::factory(10)->create();
-        // StoryVariable::factory(10)->create();
-        // Tags::factory(5)->create();
-        // StoryTags::factory(20)->create();
-
         $this->call([
             UserSeeder::class,
             StoriesSeeder::class,
