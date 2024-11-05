@@ -20,7 +20,6 @@
                 </div>
             </div>
         </div>
-
         @php
             $tags = $story->tags->pluck('name')->toArray();
             usort($tags, function($a, $b) {
@@ -32,8 +31,5 @@
            Tags :
            <x-tags-display :tags="$tags" :delete_opt="false" />
         </div>
-
     </div>
-
-
 </div>

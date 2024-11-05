@@ -14,6 +14,7 @@ class StoryBox extends Component
         $this->story = $story;
         $this->width_box = $width_box;
     }
+
     public function render()
     {
         return view('livewire.story-box');

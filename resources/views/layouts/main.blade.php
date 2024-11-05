@@ -55,37 +55,28 @@
                     </button>
 
                     @auth
-                    {{-- <form action="{{route('logout')}}" method="POST"> --}}
-                    {{-- @csrf  --}}
-                        {{-- <a href="{{route('logout')}}" class="text-2xl font-semibold whitespace-nowrap"> Log out </a> --}}
-                        {{-- <button class="text-2xl font-semibold whitespace-nowrap"
-                        onclick="window.location='{{route("logout")}}'">
-                            Log out
-                        </button>
-                    </form> --}}
-
                     <div id="profil_picture" class="relative rounded size-8 bg-slate-400">
                         <a href="{{route("profil.show", auth()->user()->name)}}" class="size-8">
                             <img src="{{asset(auth()->user()->profile_picture ? auth()->user()->profile_picture : 'storage/pp/placeholder_pp.png' )}}"
                             alt="image de profile" class="object-cover w-full h-full rounded">
                         </a>
 
-                        <div id="menu_pp" class="absolute right-0 hidden w-48 h-auto bg-orange-200 border-2 border-orange-300 rounded top-10 menu_pp">
-                            <div class="ml-2 font-semibold text-left text-black">
+                        <div id="menu_pp" class="absolute right-0 hidden w-48 h-auto text-gray-200 bg-orange-900/85 border-2 border-orange-900/95 rounded top-10 menu_pp">
+                            <div class="ml-2 font-semibold text-left">
                                 <a href="{{route("profil.show", auth()->user()->name)}}">
                                 {{auth()->user()->name}}
                                 </a>
                             </div>
                             <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
                             <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
-                            <div class="ml-2 text-left text-black">
+                            <div class="ml-2 text-left">
                                 Dernière lecture
                             </div>
-                            <div class="ml-2 text-left text-black">
+                            <div class="ml-2 text-left">
                                 Paramètre
                             </div>
                             <hr class="w-11/12 h-0.5 mx-auto my-0.5 bg-gray-400 border-0 rounded md:my-0.5 dark:bg-gray-700 ">
-                            <div class="ml-2 text-left text-black">
+                            <div class="ml-2 text-left">
                                 <form action="{{route('logout')}}" method="POST">
                                 @csrf
                                 <button onclick="window.location='{{route("logout")}}'">
@@ -95,10 +86,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
 
                     @else
                     <div class="mr-2 text-xl">

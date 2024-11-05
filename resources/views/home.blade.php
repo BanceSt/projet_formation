@@ -5,7 +5,7 @@
     <div class="h-full px-1 pb-4 overflow-y-auto ">
         <div class="py-5">
             <h1 class="pb-3.5 text-xl font-bold text-white"> ABOUTS {{ config('app.name') }} </h1>
-            <p class="text-gray-300">
+            <p class="text-gray-100">
                 {{ config('app.name') }} est un site de rédaction d'histoire intéractif, qui permet de rédiger des histoires de façon communautaire, il est même possible d'y participer sans compte.
             </p>
         </div>
