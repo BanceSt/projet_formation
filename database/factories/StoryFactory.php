@@ -20,7 +20,7 @@ class StoryFactory extends Factory
         return [
             "title" => $this->faker->sentence(6),
             "accroche" => implode(" ", $this->faker->words(6)),
-            "content" => $this->faker->paragraph(15),
+            "content" => $this->faker->paragraph(40),
             "question" => $this->faker->sentence(6),
             "note" => $this->may_generate_words(50),
             "illustration" => $this->random_image(),

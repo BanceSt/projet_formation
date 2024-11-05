@@ -15,11 +15,17 @@ class StoriesSeeder extends Seeder
     public function run(): void
     {
         //
-        $stories = Story::factory(300)->create([
+        Story::factory(300)->create([
                     "question" => "Quel sera votre prochaine action ?",
+        ]);
+        Story::factory(1)->create([
+            "question" => "Quel sera votre prochaine action ?",
+            "father_id" => 1,
         ]);
 
         $stories = Story::all();
+
+
 
         foreach ($stories as $story) {
             $story->update(['root_id' => $story->id]);

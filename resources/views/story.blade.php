@@ -2,7 +2,7 @@
 @section("title", "Histoire")
 @section("aside")
 
-    <div class="h-full pt-3 overflow-y-auto bg-gray-800">
+    <div id="scroll_bar_hidden" class="h-full pt-3 overflow-y-auto">
         {{-- Histoire racine  --}}
         <div class="text-xl font-bold text-center text-white">
             {{ $story->root()->first()->title}}
@@ -31,7 +31,7 @@
 
         {{-- note de l'auteur --}}
         @isset($story->note)
-        <div class="pt-5 text-base text-gray-400">
+        <div class="pt-5 text-base text-gray-100">
             <span class="flex font-bold"> note auteur : </span> {{
                 $story->note
             }}
@@ -40,7 +40,7 @@
 
         {{-- histoire père --}}
         @isset($story->father_id)
-        <div class="pt-5 text-base text-slate-400">
+        <div class="pt-5 text-base text-slate-100">
             <span class="flex font-bold capitalize"> histoire père : </span>
             <a href="{{route('story.show', ['id' => $story->father_id ?? 1])}}" class="hover:underline">
             {{
@@ -52,7 +52,7 @@
 
         {{-- histoire frère --}}
 
-        <div class="pt-5 text-base text-slate-400">
+        <div class="pt-5 text-base text-slate-100">
             <span class="flex font-bold capitalize">
                 choix précédents :
             </span>
@@ -77,13 +77,13 @@
             <label for="display_choice" class="text-sm font-medium text-gray-300 ms-2">Afficher les choix actuels</label>
         </div>
 
-        <div id="choices" class="hidden pt-1 text-base text-slate-400">
+        <div id="choices" class="hidden pt-1 text-base text-slate-100">
             <span class="flex mb-2 font-bold capitalize">
                 {{$story->question}}
             </span>
             <ul>
             @foreach ($story->children as $story_sons)
-                <li >
+                <li class="mb-2">
                     <a href="{{route('story.show', ['id' => $story_sons->id])}}" class="hover:underline">
                         {{ $story_sons->reponse }}
                     </a>
@@ -101,7 +101,7 @@
                 return strlen($a) <=> strlen($b);
             })
         @endphp
-        <div class="pt-5 text-base text-slate-400">
+        <div class="pt-5 text-base text-gray-100">
             <span class="flex mb-2 font-bold capitalize">
                 Tags :
             </span>
@@ -117,7 +117,7 @@
 @section("content")
 {{-- contenu --}}
     {{-- titre et author  --}}
-    <div class="justify-center text-5xl font-bold align text-zinc-600">
+    <div class="justify-center text-4xl font-bold align text-zinc-600">
         {{ $story->title}}
     </div>
     <div class="justify-center text-2xl font-bold align text-zinc-800">
