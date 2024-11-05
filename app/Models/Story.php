@@ -38,8 +38,8 @@ class Story extends Model
     }
 
     // Chaque histoire peut êter liker et marquer plusieur fois (one-to-many)
-    public function engagemt() :HasMany {
-        return $this->hasMany(Engagemt::class);
+    public function who_like_it() :BelongsToMany {
+        return $this->belongsToMany(User::class, "engagemts");
     }
 
     // Chaque histoire a un ou plusieur tags (many-to-many)

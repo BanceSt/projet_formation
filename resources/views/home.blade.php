@@ -53,8 +53,11 @@
     @php
         $stories_random = $stories->where('father_id', null)->random(14);
         $stories_recent = $stories->sortByDesc("created_at")->take(14);
+        $stories_pop = $stories->sortByDesc(function ($story) {
+            return $story->who_like_it->count();
+        })->take(14);
     @endphp
-    <div class="mb-1 ml-5 text-base font-bold capitalize">
+    <div class="mb-1 ml-5 text-2xl font-bold capitalize pb-3">
         Découvrez le concept avec ces histoires :
     </div>
     <div class="flex flex-wrap justify-center gap-4 mb-3 ">
@@ -71,8 +74,8 @@
     </div>
 
     {{-- section découverte --}}
-    <div class="ml-5 text-base font-bold capitalize">
-        Les histoires récement actualiser :
+    <div class="ml-5 text-2xl font-bold capitalize pb-3">
+        histoires récement actualiser :
     </div>
     <div class="flex flex-wrap justify-center gap-4 mb-3 ">
         @foreach ($stories_recent as $story)
@@ -88,8 +91,12 @@
     </div>
 
     {{-- section découverte --}}
-    <div class="ml-5 text-base font-bold capitalize">
-        Les histoires débutées pas nos auteurs les plus populaires :
+    <div class="ml-5 text-2xl font-bold capitalize pb-3">
+        histoires les plus populaires :
     </div>
-    <div></div>
+    <div class="flex flex-wrap justify-center gap-4 mb-3 ">
+        @foreach ($stories_recent as $story)
+            @livewire("story-box", ["story" => $story, "width_box" => "32%"])
+        @endforeach
+    </div>
 @endsection

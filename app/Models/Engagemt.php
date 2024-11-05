@@ -18,7 +18,9 @@ class Engagemt extends Model
         "favorite"
     ];
 
-    public function story() {
-        return $this->belongsTo(Story::class);
-    }
+    // public function story() {
+    //     return $this->belongsTo(Story::class);
+    // }
+
+    // public function
 }

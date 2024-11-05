@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Story;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -26,6 +27,15 @@ class StoriesSeeder extends Seeder
                 "father_id" => $story->id,
                 "root_id" => $story->id
             ]);
+
+            // Engagement
+            $rd_users = User::inRandomOrder()->take(fake()->numberBetween(0, 65))->pluck("id");
+            $story->who_like_it()->attach($rd_users, [
+                "follow" => fake()->boolean(50) ? 1 : 0,
+                "favorite" => 1
+            ]);
         };
+
+
     }
 }

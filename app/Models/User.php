@@ -72,4 +72,8 @@ class User extends Authenticatable
     public function follower(): BelongsToMany {
         return $this->belongsToMany(User::class, "follows", "follow_id", "follower_id");
     }
+
+    public function what_i_like() :BelongsToMany {
+        return $this->belongsToMany(Story::class, "engagemts");
+    }
 }
