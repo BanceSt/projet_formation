@@ -7,6 +7,9 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomePageController::class, 'show'])->name('home');
+Route::get("/test", function () {
+    return view('show_layout');
+});
 
 Route::prefix("Story")->name("story")->group(function () {
     Route::get("/create/{id?}", [StoryController::class, "create"])->name('.create');
