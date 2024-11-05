@@ -11,7 +11,7 @@
         </div>
 
         <div class="w-full">
-            <button type="button" class="w-full px-5 py-2.5 text-md font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
+            <button type="button" class="w-full px-5 py-2.5 text-md font-medium text-white bg-orange-700 hover:bg-orange-800 focus:ring-4
                 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onclick="window.location='{{route("register")}}'">
                 Rejoignez-nous
@@ -21,7 +21,7 @@
                     OU
             </div>
 
-            <button type="button" class="w-full px-5 py-2.5 text-md font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
+            <button type="button" class="w-full px-5 py-2.5 text-md font-medium text-white bg-orange-700 hover:bg-orange-800 focus:ring-4
                 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onclick="window.location='{{route("story.create")}}'">
                 Commencer à écrire !
@@ -36,7 +36,7 @@
 
     {{-- short presentation --}}
     <div class="w-2/4 ml-20 h-36">
-        <div class="text-3xl"> {{ config('app.name') }} - Histoire Intéractifs</div>
+        <div class="text-3xl"> <span class="font-semibold">{{ config('app.name') }}</span> - Histoire Intéractifs</div>
         <div class="text-xl">
             Découvrer et/ou participer à la création de nombreux récits du genre que vous souhaités et avec des possibilités de scénarios infini
         </div>
