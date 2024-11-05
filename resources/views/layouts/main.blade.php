@@ -16,7 +16,7 @@
 
     <div class="h-full max-h-full min-h-screen">
         {{-- Navbar --}}
-        <nav class="bg-gray-900 border-gray-200 ">
+        <nav class="border-gray-200 bg-orange-900/85 ">
             <div class="flex flex-wrap items-center justify-between max-w-full p-2">
                 <a href="{{route('home')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
@@ -34,9 +34,9 @@
                         </div>
                         <input type="search" id="default-search" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
                         <button type="submit" style="bottom : 0.0625rem;"
-                                class="text-white absolute end-0.5 bg-blue-700 hover:bg-blue-800
-                                focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2
-                                 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                class="text-white absolute end-0.5 bg-orange-500 hover:bg-orange-600
+                                focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2
+                                 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
                             Search
                         </button>
                     </div>
@@ -46,7 +46,9 @@
 
                 <div class="relative flex {{auth()->check() ? 'items-center' : 'items-baseline'}} flex-row space-x-3 text-white rtl:space-x-reverse">
 
-                    <button type="button" class="inline-flex text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-xl px-2.5 py-1 text-center"
+                    <button type="button" class="inline-flex text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-500
+                                                hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800
+                                                font-medium rounded-lg text-xl px-2.5 py-1 text-center"
                             onclick="window.location='{{route("story.create")}}'">
                         NEW
                         <i class="self-center text-sm fa-solid fa-pen ps-2"></i>
@@ -112,7 +114,7 @@
         </nav>
 
         <div class="flex flex-row w-full h-full min-h-screen">
-            <aside id="logo-sidebar" class="sticky top-0 z-40 w-2/12 h-screen px-2 transition-transform -translate-x-full bg-gray-800 border-r border-gray-700 sm:translate-x-0"  aria-label="Sidebar">
+            <aside id="logo-sidebar" class="sticky top-0 z-40 w-2/12 h-screen px-2 transition-transform -translate-x-full border-r border-orange-700 bg-orange-800/55 sm:translate-x-0"  aria-label="Sidebar">
             @yield("aside")
             </aside>
             <div class="@yield("class_div_content") flex flex-col w-10/12 h-auto min-h-screen pt-5 bg-gradient-to-b from-orange-50/45 to-orange-100/15">

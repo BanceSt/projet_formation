@@ -2,7 +2,7 @@
 @section("aside")
 {{-- sidebar --}}
 
-    <div class="h-full px-1 pb-4 overflow-y-auto bg-gray-800">
+    <div class="h-full px-1 pb-4 overflow-y-auto ">
         <div class="py-5">
             <h1 class="pb-3.5 text-xl font-bold text-white"> ABOUTS {{ config('app.name') }} </h1>
             <p class="text-gray-300">
