@@ -4,6 +4,7 @@
     </div>
 
     {{-- Zone pour qu l'utilisateur comment  --}}
+    @if (!$act_thread)
     <div class="my-5">
         <x-input-label for="comment" :value="__('Votre commentaire :')" class="text-xl"/>
         <div class="flex flex-row mt-1">
@@ -19,16 +20,37 @@
             </button>
         </div>
     </div>
+    @endif
+
+    @if ($act_thread)
+            {{-- si lecture de thread --}}
+            <div class="w-full h-20 bg-cyan-700">
+
+            </div>
+    @endif
 
     {{-- lister les commentaire --}}
     <div class="mt-2">
         @forelse ($comments as $comment)
-            <div class="w-full mb-4 {{ 'pl-' . (4 * $comment["depth"]) }}">
+            <div class="w-full mb-4" style="padding-left: {{$comment["depth"]}}rem;">
                 {{-- commentaire --}}
                 <div class="flex flex-row">
-                    <div class="mr-2 rounded size-10 bg-slate-700"></div>
-                    <div class="flex flex-col w-full pl-1 overflow-auto border-gray-300 border-solid rounded-md shadow-sm min-h-20 max-h-24 bg-slate-100" style='border-width : 1px;'>
-                        <span class="inline-block text-base font-bold"> {{($comment['comment']->user ? $comment["comment"]->user->name : "Anonyme") . " :"}} </span>
+                    <div class="mr-2 rounded size-10 bg-slate-700">
+                        @if ($comment['comment']->user)
+                        <a href="{{route("profil.show", $comment['comment']->user->name)}}">
+                            <img class="object-cover w-full h-full rounded"
+                            src="{{asset($user->profile_picture ?? 'storage/pp/placeholder_pp.png' )}}">
+                        </a>
+                        @else
+                        <img class="object-cover w-full h-full rounded"
+                        src="{{asset('storage/pp/placeholder_pp.png' )}}">
+                        @endif
+                    </div>
+                    <div class="flex flex-col w-full pl-1 overflow-auto border-gray-300 border-solid rounded-md shadow-sm
+                                min-h-20 max-h-24 bg-slate-100" style='border-width : 1px;'>
+                        <span class="inline-block text-base font-bold">
+                            {{($comment['comment']->user ? $comment["comment"]->user->name : "Anonyme") . " :"}}
+                        </span>
                         {{$comment["comment"]->content}}
                     </div>
                 </div>
@@ -47,7 +69,8 @@
                         <x-input-label for="comment" :value="__('Votre commentaire :')" class="text-xl"/>
                         <div class="flex flex-row mt-1">
                             <div class="mr-2 rounded size-10 bg-slate-700"></div>
-                            <x-text-area wire:model="comment_reply.{{$comment['comment']->id}}" id="note" class="block w-full " type="text" name="comment" :value="old('comment')"
+                            <x-text-area wire:model="comment_reply.{{$comment['comment']->id}}" id="note"
+                                class="block w-full " type="text" name="comment" :value="old('comment')"
                                 placeholder="Commentez ici..."/>
                         </div>
 
@@ -61,6 +84,9 @@
                 @endif
             </div>
         @empty
+        <div class="w-full my-5 text-xl font-semibold text-center capitalize">
+            -------- aucun commentaire --------
+        </div>
         @endforelse
     </div>
 

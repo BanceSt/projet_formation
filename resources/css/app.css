@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
 
 /* Custom CSS Needed for TipTap PlaceHolder */
 .ProseMirror p.is-editor-empty:first-child::before {
@@ -36,4 +39,11 @@
 
 #scroll_bar_hidden {
     overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Masque la barre de défilement dans Firefox */
+    -ms-overflow-style: none; /* Masque la barre de défilement dans IE et Edge */
+}
+
+#scroll-container::-webkit-scrollbar {
+    display: none; /* Masque la barre de défilement dans Chrome, Safari et Opera */
 }

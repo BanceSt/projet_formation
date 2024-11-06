@@ -87,16 +87,12 @@ class CommentSection extends Component
             else {
                 // Vérifiant s'il avait des sous commetaires
                 if ($comment->children()->exists()) {
-                    // ce tapleau permettra de précise qu'il existe d'autre commentaire après même si il ne sont pas visible
+                    // ce tableau permettra de précise qu'il existe d'autre commentaire après même si il ne sont pas visible
                     $comments[count($comments) - 1]["autre"] = true;
                 }
             }
-
-
         }
-
         return $comments;
-
     }
 
     public function render()

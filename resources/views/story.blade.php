@@ -2,7 +2,7 @@
 @section("title", "Histoire")
 @section("aside")
 
-    <div id="scroll_bar_hidden" class="h-full pt-3 overflow-y-auto">
+    <div id="scroll_bar_hidden" class="h-full pt-3">
         {{-- Histoire racine  --}}
         <div class="text-xl font-bold text-center text-white">
             {{ $story->root()->first()->title}}
@@ -20,7 +20,8 @@
         </div>
 
         <div class="text-xl font-bold text-center text-white">
-            {{ $story->title}} <span class="font-normal"> par
+            <a href="#topPage"> {{ $story->title}} </a>
+                <span class="font-normal"> par
                <span class="underline underline-offset-2">
                 <a href="{{ $story->user ? route('profil.show', $story->user->name) : '#'}}">
                 {{ $story->user ? $story->user->name : "Anonymous"}}
@@ -63,6 +64,7 @@
                     {{ $story_sibling->title}}
                 </a>
             </li>
+            <hr style="border-top: dotted 1px;" />
         @endforeach
         </ul>
         </div>
@@ -88,6 +90,7 @@
                         {{ $story_sons->reponse }}
                     </a>
                 </li>
+                <hr style="border-top: dotted 1px;" />
             @endforeach
             </ul>
         </div>
@@ -101,7 +104,7 @@
                 return strlen($a) <=> strlen($b);
             })
         @endphp
-        <div class="pt-5 text-base text-gray-100">
+        <div class="pt-5 mb-6 text-base text-gray-100">
             <span class="flex mb-2 font-bold capitalize">
                 Tags :
             </span>
@@ -117,7 +120,7 @@
 @section("content")
 {{-- contenu --}}
     {{-- titre et author  --}}
-    <div class="justify-center text-4xl font-bold align text-zinc-600">
+    <div id="topPage" class="justify-center text-4xl font-bold align text-zinc-600">
         {{ $story->title}}
     </div>
     <div class="justify-center text-2xl font-bold align text-zinc-800">

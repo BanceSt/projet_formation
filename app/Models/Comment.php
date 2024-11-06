@@ -28,11 +28,11 @@ class Comment extends Model
 
     // Relation auto-référentielle : Une story peut avoir un "père"
     public function father() : BelongsTo {
-        return $this->belongsTo(Comment::class, 'id');
+        return $this->belongsTo(Comment::class, 'reply_to');
     }
 
     // Relation inverse : Une story peut avoir plusieurs "enfants"
     public function children() : HasMany {
-        return $this->hasMany(Comment::class, 'id');
+        return $this->hasMany(Comment::class, 'reply_to');
     }
 }
