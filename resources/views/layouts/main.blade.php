@@ -121,15 +121,18 @@
             var menu_pp = document.getElementById("menu_pp");
             var profile_picture = document.getElementById("profil_picture");
 
-            menu_pp.addEventListener("mouseover", (e) => {
+            if (menu_pp) {
+                menu_pp.addEventListener("mouseover", (e) => {
                 hovering_menu_pp = true;
             })
 
             menu_pp.addEventListener("mouseout", (e) => {
                 hovering_menu_pp = false;
             })
+            }
 
-            profile_picture.addEventListener("mouseover", (e) => {
+            if (profile_picture) {
+                profile_picture.addEventListener("mouseover", (e) => {
                 menu_pp.classList.remove("hidden")
                 menu_pp.style.maxHeight = menu_pp.scrollHeight + "px";
                 clearTimeout(timeout_menu_pp);
@@ -146,6 +149,10 @@
                 }, 500);
 
             })
+            }
+
+
+
         })
     </script>
     @livewireScripts

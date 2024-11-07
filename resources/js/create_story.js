@@ -12,11 +12,19 @@ import { Color } from 'https://esm.sh/@tiptap/extension-color@2.6.6';
 import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder@2.6.6';
 
 document.addEventListener("DOMContentLoaded", function() {
+    var father_id = null;
+    const fatheridElement = document.querySelector("#father_id")
+    if (fatheridElement) {
+        father_id = fatheridElement.value
+        console.log("Father ID:", father_id);
+    };
+
+
     Dropzone.autoDiscover = false;
 
     var storeUrl = document.querySelector('meta[name="store-url"]').getAttribute('content');
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    console.log(storeUrl);
+    // console.log(storeUrl);
 
 
     function form_create(formData) {
@@ -24,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var father_id = null;
         const fatheridElement = document.querySelector("#father_id")
         if (fatheridElement) father_id = fatheridElement.value;
+        console.log("Father ID:", father_id);
+        console.log("null");
 
         // end
         var end = 0;
@@ -32,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // reponse
         const reponseElement = document.querySelector("#reponse")
-        var rep = null
+        var rep = null;
         if (reponseElement) {
             if (reponseElement.value.trim() === "") rep = document.querySelector("#question").value;
             else rep = reponseElement.value;
@@ -118,7 +128,9 @@ document.addEventListener("DOMContentLoaded", function() {
         parallelUploads: 100,
         dictDefaultMessage: "Cliquez ou déposez votre illustration ici",
         acceptedFiles: "image/*",
+        addRemoveLinks: true, // Ajoute un lien "Remove"
         clickable: true,
+        // previewsContainer: ".previews",
         init: function() {
             var myDropzone = this;
             document.querySelector("#valide_but").addEventListener("click", function(e) {
@@ -133,13 +145,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     alert("Le titre est obligatoire.");
                     return;
                 } else if (editor.getHTML().trim() == "") {
-                    console.log("g1:", editor.getHTML())
-                    console.log("g1:", editor.getHTML().trim())
+
                     alert("Aucune histoire écrite");
                     return;
 
                 } else if (!tags) {
-                    console.log("g:", editor.getHTML().trim())
                     alert("Sélectionner au moins un tag");
                     return;
                 }
@@ -163,7 +173,28 @@ document.addEventListener("DOMContentLoaded", function() {
                     alert("Une erreur s'est produite lors de l'envoi.");
                 }
             });
+
+            // Masque le texte lorsqu'un fichier est ajouté
+            this.on("addedfile", function(file) {
+                document.querySelectorAll('.togone').forEach((element) => {
+                    element.style.display = 'none'
+                });
+            });
+
+            // Remettre le texte lorsqu'un fichier est supprimé
+            this.on("removedfile", function(file) {
+                document.querySelectorAll('.togone').forEach((element) => {
+                    element.style.display = 'block'
+                });
+                myDropzone.setupEventListeners();
+            });
+
+            this.on('maxfilesreached', function() {
+                myDropzone.removeEventListeners();
+            });
             },
+
+
         },
     )
 

@@ -12,6 +12,13 @@ class TagsInput extends Component
     protected $listeners = ['addTag'];
 
     public $query = '';
+    public $story;
+
+
+    public function mount($story = null) {
+        $this->story = $story;
+        if ($story) $this->tags = $story->tags()->pluck('name')->toArray();
+    }
 
     public function addTag($tagName) {
         // Vérifier si le tag n'est pas déjà ajouté

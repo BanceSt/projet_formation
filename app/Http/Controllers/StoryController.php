@@ -27,6 +27,7 @@ class StoryController extends Controller
         'illustration' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation du fichier image
         ]);
 
+
         // Traitement de l'image si elle est présente
         if ($request->hasFile('illustration')) {
             $file = $request->file('illustration');
@@ -45,9 +46,10 @@ class StoryController extends Controller
         $story->content = $request->contentEditeur;
         $story->question = $request->question;
         $story->reponse = $request->end ? null : $request->reponse;
-        $story->father_id = $request->father_id;
+        $story->father_id = null;
         $story->end = $request->end;
         $story->save();
+
 
         // Ajout les tags
         foreach (explode(",", $request->tags)  as $tag) {
