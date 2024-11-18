@@ -32,20 +32,22 @@ class Story extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Chaque histoire peut avoir plusieurs commentaires (one-to-Many)
+    // Chaque histoire peut avoir plusieurs commentaires (one-to-many)
     public function comment() :HasMany {
         return $this->hasMany(Comment::class);
     }
 
-    // Chaque histoire peut êter liker et marquer plusieur fois (one-to-many)
+    // Chaque histoire a un ou plusieurs tags (many-to-many)
+    public function tags() :BelongsToMany {
+        return $this->belongsToMany(Tags::class);
+    }
+
+    // Chaque histoire peut êter liker et marquer plusieur fois (many-to-many)
     public function who_like_it() :BelongsToMany {
         return $this->belongsToMany(User::class, "engagemts");
     }
 
-    // Chaque histoire a un ou plusieur tags (many-to-many)
-    public function tags() :BelongsToMany {
-        return $this->belongsToMany(Tags::class);
-    }
+
 
     // Chaque histoire peut être dans plusieurs dossier (many-to-many)
     public function folders() : BelongsToMany {
