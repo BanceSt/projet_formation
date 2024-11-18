@@ -19,7 +19,7 @@
         <nav class="border-gray-200 bg-orange-900/85 ">
             <div class="flex flex-wrap items-center justify-between max-w-full p-2">
                 <a href="{{route('home')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                    <img src="{{asset('posty_logo_2_.png')}}" class="h-8" alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold text-white whitespace-nowrap">Posty</span>
                 </a>
 
@@ -61,7 +61,7 @@
                             alt="image de profile" class="object-cover w-full h-full rounded">
                         </a>
 
-                        <div id="menu_pp" class="absolute right-0 hidden w-48 h-auto text-gray-200 bg-orange-900/85 border-2 border-orange-900/95 rounded top-10 menu_pp">
+                        <div id="menu_pp" class="absolute right-0 hidden w-48 h-auto text-gray-200 border-2 rounded bg-orange-900/85 border-orange-900/95 top-10 menu_pp">
                             <div class="ml-2 font-semibold text-left">
                                 <a href="{{route("profil.show", auth()->user()->name)}}">
                                 {{auth()->user()->name}}

@@ -12,14 +12,6 @@ import { Color } from 'https://esm.sh/@tiptap/extension-color@2.6.6';
 import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder@2.6.6';
 
 document.addEventListener("DOMContentLoaded", function() {
-    var father_id = null;
-    const fatheridElement = document.querySelector("#father_id")
-    if (fatheridElement) {
-        father_id = fatheridElement.value
-        console.log("Father ID:", father_id);
-    };
-
-
     Dropzone.autoDiscover = false;
 
     var storeUrl = document.querySelector('meta[name="store-url"]').getAttribute('content');

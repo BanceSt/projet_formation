@@ -14,7 +14,6 @@ class StoryController extends Controller
 
     public function show($id)  {
         $story = Story::find($id);
-
         return view("story", compact("story"));
     }
 
@@ -35,6 +34,10 @@ class StoryController extends Controller
             $file->move(public_path('storage/illustration'), $fileName);
         }
 
+        // fix father_id
+        $father_id = $request->father_id;
+        if ($father_id === 'null') $father_id = null;
+
         // Stocker les autres données du formulaire
         // Exemple :
         $story = new Story();
@@ -46,9 +49,13 @@ class StoryController extends Controller
         $story->content = $request->contentEditeur;
         $story->question = $request->question;
         $story->reponse = $request->end ? null : $request->reponse;
-        $story->father_id = null;
+        $story->father_id = $father_id;
         $story->end = $request->end;
         $story->save();
+
+        //fix observer
+        if ($story->root_id === null) $story->root_id = $story->id;
+
 
 
         // Ajout les tags
