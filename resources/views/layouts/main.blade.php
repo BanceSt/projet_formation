@@ -16,7 +16,7 @@
 
     <div class="h-full max-h-full min-h-screen">
         {{-- Navbar --}}
-        <nav class="border-gray-200 bg-orange-900/85 ">
+        <nav class="border-gray-200 bg-orange-900/85">
             <div class="flex flex-wrap items-center justify-between max-w-full p-2">
                 <a href="{{route('home')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="{{asset('posty_logo_2_.png')}}" class="h-8" alt="Flowbite Logo" />
@@ -101,13 +101,44 @@
         </nav>
 
         <div class="flex flex-row w-full h-full min-h-screen">
-            <aside id="logo-sidebar" class="sticky top-0 z-40 w-2/12 h-screen px-2 transition-transform -translate-x-full border-r border-orange-700 bg-orange-800/55 sm:translate-x-0"  aria-label="Sidebar">
+            <aside id="logo-sidebar" class="sticky top-0 z-40 w-2/12 h-screen px-2 transition-transform -translate-x-full border-r border-orange-700 bg-orange-800/45 sm:translate-x-0"  aria-label="Sidebar">
             @yield("aside")
             </aside>
-            <div class="@yield("class_div_content") flex flex-col w-10/12 h-auto min-h-screen pt-5 bg-gradient-to-b from-orange-50/45 to-orange-100/15">
+            <div class="@yield("class_div_content") flex flex-col w-10/12 h-auto min-h-screen pt-5 bg-gradient-to-b from-orange-50/45 to-orange-100/15 bg-orange-50/45 ">
             @yield("content")
             </div>
         </div>
+
+
+
+        <footer class="text-gray-900 shadow bg-orange-800/85 dark:bg-gray-900">
+            <div class="w-full max-w-screen-xl p-4 mx-auto md:py-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <a href="{{route('home')}}" class="flex items-center mb-4 space-x-3 sm:mb-0 rtl:space-x-reverse">
+                        <img src="{{asset('posty_logo_2_.png')}}" class="h-8" alt="Flowbite Logo" />
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Posty</span>
+                    </a>
+                    <ul class="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
+                        <li>
+                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                <span class="block text-sm sm:text-center ">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+            </div>
+        </footer>
+
+
 
 
     </div>
@@ -150,9 +181,6 @@
 
             })
             }
-
-
-
         })
     </script>
     @livewireScripts
